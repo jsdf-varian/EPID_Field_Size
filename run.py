@@ -30,27 +30,33 @@ def main(file_name, figure=False):
 
     print(f"In-line FWHM: {col_fwhm:.2f} mm")
     print(f"Cross-line FWHM: {row_fwhm:.2f} mm")
-    
+
     if figure:
         # プロットして確認
         # 列方向のプロット
         plt.figure(figsize=(12, 5))
         plt.subplot(1, 2, 1)
         plt.plot(col_line)
-        plt.axhline(y=np.max(col_line)/2, color='r', linestyle='--', label='Half Maximum')
-        plt.axvline(x=col_left, color='g', linestyle='--', label='Left FWHM')
-        plt.axvline(x=col_right, color='g', linestyle='--', label='Right FWHM')
-        plt.title('Inline Profile')
+        plt.axhline(
+            y=np.max(col_line) / 2, color="r", linestyle="--", label="Half Maximum"
+        )
+        plt.axvline(x=col_left, color="g", linestyle="--", label="Left FWHM")
+        plt.axvline(x=col_right, color="g", linestyle="--", label="Right FWHM")
+        plt.title("Inline Profile")
         plt.legend()
 
         # 行方向のプロット
         plt.subplot(1, 2, 2)
         plt.plot(row_line)
-        plt.axhline(y=np.max(row_line)/2, color='r', linestyle='--', label='Half Maximum')
-        plt.axvline(x=row_left, color='g', linestyle='--', label='Left FWHM')
-        plt.axvline(x=row_right, color='g', linestyle='--', label='Right FWHM')
-        plt.title('Cross Profile')
+        plt.axhline(
+            y=np.max(row_line) / 2, color="r", linestyle="--", label="Half Maximum"
+        )
+        plt.axvline(x=row_left, color="g", linestyle="--", label="Left FWHM")
+        plt.axvline(x=row_right, color="g", linestyle="--", label="Right FWHM")
+        plt.title("Cross Profile")
         plt.legend()
 
         plt.tight_layout()
         plt.show()
+        
+    return col_fwhm, row_fwhm
